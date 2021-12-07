@@ -5,6 +5,7 @@ change this
 `system_ip=a.b.c.d`
 
 to this:
+
 `system_ip=192.168.1.10`
 
 In this case my local IP address was 192.168.1.10.
