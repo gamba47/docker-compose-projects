@@ -1,0 +1,32 @@
+version: '3'
+services:
+ app:
+  image: 'jc21/nginx-proxy-manager:latest'
+  ports:
+   - '80:80'
+   - '81:81' # desactivate on first configuration 
+   - '443:443'
+  volumes:
+   - ./config.json:/app/config/production.json
+   - ./data:/data
+   - ./letsencrypt:/etc/letsencrypt
+  networks:
+    - internal
+  restart: always
+ db:
+  image: 'jc21/mariadb-aria:10.4'
+  environment:
+   MYSQL_ROOT_PASSWORD: 'mysqlr00t-password'
+   MYSQL_DATABASE: 'npmwebserver'
+   MYSQL_USER: 'mysql-user'
+   MYSQL_PASSWORD: 'mysql-password'
+  volumes:
+    - ./data/mysql:/var/lib/mysql
+  networks:
+    - internal
+  restart: always
+
+networks:
+  internal:
+    driver: bridge
+
