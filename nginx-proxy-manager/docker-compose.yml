@@ -14,7 +14,7 @@ services:
     - internal
   restart: always
  db:
-  image: 'jc21/mariadb-aria:10.4'
+  image: 'jc21/mariadb-aria:latest'
   environment:
    MYSQL_ROOT_PASSWORD: 'mysqlr00t-password'
    MYSQL_DATABASE: 'npmwebserver'
