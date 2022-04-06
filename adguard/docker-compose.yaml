@@ -1,0 +1,14 @@
+version: '3'
+services:
+    wireguard:
+       image: adguard/adguardhome:latest
+       container_name: adguardDNS
+       restart: always
+       volumes:
+          - $PWD/adguard-workdir:/opt/adguardhome/word
+          - $PWD/adguard-confdir:/opt/adguardhome/conf
+       ports:
+          - "53:53/tcp"
+          - "53:53/udp"
+          - "3000:3000/tcp"  # only used the first time for configuration
+
